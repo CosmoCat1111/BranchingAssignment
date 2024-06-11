@@ -24,7 +24,7 @@ namespace BranchingAssignment
             int weightPackage = Convert.ToInt32(Console.ReadLine());
 
             //if the weight is greater than 50, display error message. end program.
-            if (weightPackage > weightBox)
+            if (weightPackage >= weightBox)
             {
                 Console.WriteLine("Package too heavy to be shipped via Package Express. Have a good day.");
                 Console.Read();
@@ -51,21 +51,22 @@ namespace BranchingAssignment
                 //creating box results and converting to currency. 
                 Console.WriteLine("You're estmiated shipping cost is listed below:");
                 int boxResult1 = (((widthPackage * heightPackage) * lengthPackage) * weightBox / 100);
-                Decimal boxResults1 = Convert.ToDecimal(Console.ReadLine());
-                Console.WriteLine("$" + boxResult1);
+
+                if (boxResult1 >= 6250000)
+                {
+                    Console.WriteLine("Your package is too large to ship with Package Express, have a nice day!");
+                    Console.ReadLine();
+                    Environment.Exit(0);
+                }
+
+                else if ( boxResult1 < 6250000)
+                {
+                    Decimal boxResults1 = Convert.ToDecimal(boxResult1);
+                    Console.WriteLine("$" + boxResult1);
+                    Console.ReadLine();
+                }
                 Console.ReadLine();
             }
-
-         
-
-
-
-
-            //{
-            //    Console.WriteLine("Your package is too large to ship with Package Express, have a nice day!");
-            //    Console.ReadLine();
-            //}
-
         }
     }
 }
